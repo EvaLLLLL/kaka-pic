@@ -294,7 +294,7 @@
     "@babel/helper-create-class-features-plugin" "^7.12.1"
     "@babel/helper-plugin-utils" "^7.10.4"
 
-"@babel/plugin-proposal-decorators@7.12.1":
+"@babel/plugin-proposal-decorators@7.12.1", "@babel/plugin-proposal-decorators@^7.12.1":
   version "7.12.1"
   resolved "https://registry.npm.taobao.org/@babel/plugin-proposal-decorators/download/@babel/plugin-proposal-decorators-7.12.1.tgz#59271439fed4145456c41067450543aee332d15f"
   integrity sha1-WScUOf7UFFRWxBBnRQVDruMy0V8=
@@ -7313,6 +7313,23 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npm.taobao.org/mkdirp/download/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha1-PrXtYmInVteaXw4qIh3+utdcL34=
+
+mobx-react-lite@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.npm.taobao.org/mobx-react-lite/download/mobx-react-lite-3.1.4.tgz#58c4570cc645feebb9da44fdba3dfd0df37c36b2"
+  integrity sha1-WMRXDMZF/uu52kT9uj39DfN8NrI=
+
+mobx-react@^7.0.4:
+  version "7.0.4"
+  resolved "https://registry.npm.taobao.org/mobx-react/download/mobx-react-7.0.4.tgz#de73fc4d2b401c92a3d30e30158ea781a80ca9fa"
+  integrity sha1-3nP8TStAHJKj0w4wFY6ngagMqfo=
+  dependencies:
+    mobx-react-lite "^3.1.4"
+
+mobx@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.npm.taobao.org/mobx/download/mobx-6.0.3.tgz?cache=0&sync_timestamp=1604447029226&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmobx%2Fdownload%2Fmobx-6.0.3.tgz#cec784bb41acf9eb87b449f1181c9dd8c77ccc0b"
+  integrity sha1-zseEu0Gs+euHtEnxGByd2Md8zAs=
 
 move-concurrently@^1.0.1:
   version "1.0.1"
