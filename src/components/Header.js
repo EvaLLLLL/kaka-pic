@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 function Header() {
 	return (
 		<header>
-			{/*<img src={Logo} alt="logo"/>*/}
+			<img src={Logo} alt="logo"/>
 			<nav>
 				<Link to="/">首页</Link>
 				<Link to="/history">历史</Link>
