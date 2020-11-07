@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Form, Input, Button} from "antd";
+import { Form, Input, Button } from "antd";
 
 const Wrapper = styled.div`
   max-width: 600px;
@@ -9,12 +9,10 @@ const Wrapper = styled.div`
   border-radius: 4px;
   padding: 20px;
 `;
-
 const Title = styled.h1`
   text-align: center;
   margin-bottom: 30px;
 `;
-
 const layout = {
   labelCol: {
     span: 8,
@@ -39,6 +37,15 @@ const Component = () => {
     console.log("Failed:", errorInfo);
   };
 
+  const validateUsername = (rule, value, callback) => {
+    console.log(rule, value);
+    if (/\W/.test(value))
+      return Promise.reject("不能出现字母数字下划线以外的字符");
+    if (value.length < 3) return Promise.reject("用户名字符长度不能小于 3");
+    if (value.length > 10) return Promise.reject("用户名字符长度不能大于 10");
+    Promise.resolve();
+  };
+
   return (
     <Wrapper>
       <Title>注册</Title>
@@ -56,6 +63,9 @@ const Component = () => {
               required: true,
               message: "请输入用户名",
             },
+            {
+              validator: validateUsername,
+            },
           ]}
         >
           <Input />
@@ -68,6 +78,14 @@ const Component = () => {
             {
               required: true,
               message: "请输入密码",
+            },
+            {
+              min: 4,
+              message: "至少需要 4 个字符",
+            },
+            {
+              max: 10,
+              message: "最长 10 个字符",
             },
           ]}
         >
