@@ -10,6 +10,7 @@ body {
 	color: #444;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background: #f0f2f5;
 }
 
 a {
@@ -25,4 +26,5 @@ a {
 
 main {
 	flex-grow: 1;
+	padding: 100px;
 }

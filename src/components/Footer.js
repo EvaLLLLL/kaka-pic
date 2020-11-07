@@ -1,11 +1,19 @@
 import React from 'react'
+import styled from 'styled-components'
 
-function Footer() {
+const Footer = styled.footer`
+	padding: 10px;
+	text-align: center;
+	font-size: 12px;
+	color: #aaa;
+`
+
+function Component() {
 	return (
-		<footer>
-			<h1>Footer</h1>
-		</footer>
+		<Footer>
+			Footer
+		</Footer>
 	)
 }
 
-export default Footer
+export default Component
