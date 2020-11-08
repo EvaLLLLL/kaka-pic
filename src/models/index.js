@@ -22,6 +22,8 @@ const Auth = {
   },
 
   login(username, password) {
+    console.log("------");
+    console.log(username, password);
     return new Promise((resolve, reject) => {
       User.logIn(username, password).then(
         (loginedUser) => resolve(loginedUser),
