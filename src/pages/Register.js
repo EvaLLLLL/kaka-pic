@@ -46,6 +46,13 @@ const Component = () => {
     Promise.resolve();
   };
 
+  const validateComfirm = ({getFieldValue}) => ({
+    validator(rule, value){
+      if(getFieldValue('password') === value) return Promise.resolve()
+      return Promise.reject('两次密码不一致')
+    }
+  })
+
   return (
     <Wrapper>
       <Title>注册</Title>
@@ -87,6 +94,20 @@ const Component = () => {
               max: 10,
               message: "最长 10 个字符",
             },
+          ]}
+        >
+          <Input.Password />
+        </Form.Item>
+
+        <Form.Item
+          label="确认密码"
+          name="confirmPassword"
+          rules={[
+            {
+              required: true,
+              message: "请输入密码",
+            },
+            validateComfirm
           ]}
         >
           <Input.Password />
