@@ -46,12 +46,12 @@ const Component = () => {
     Promise.resolve();
   };
 
-  const validateComfirm = ({getFieldValue}) => ({
-    validator(rule, value){
-      if(getFieldValue('password') === value) return Promise.resolve()
-      return Promise.reject('两次密码不一致')
-    }
-  })
+  const validateComfirm = ({ getFieldValue }) => ({
+    validator(rule, value) {
+      if (getFieldValue("password") === value) return Promise.resolve();
+      return Promise.reject("两次密码不一致");
+    },
+  });
 
   return (
     <Wrapper>
@@ -107,7 +107,7 @@ const Component = () => {
               required: true,
               message: "请输入密码",
             },
-            validateComfirm
+            validateComfirm,
           ]}
         >
           <Input.Password />
