@@ -6,7 +6,7 @@ import {useStores} from '../stores'
 import {observer} from 'mobx-react'
 
 const Header = styled.header`
-  padding: 10px 100px;
+  padding: 15px 80px;
   display: flex;
   align-items: center;
   background-color: #001528;
@@ -19,17 +19,30 @@ const Actions = styled.div`
 `
 
 const StyledLink = styled(NavLink)`
+	padding: 20px;
   color: #fff;
+  font-weight: bold;
   margin-left: 30px;
   &.active {
-    border-bottom: 1px solid #ccc;
+  	position: relative;
+  	color: #1790ff;
+  }
+  &.active::after {
+  	content: '';
+  	display: block;
+  	height: 3px;
+  	background-color: #1790ff;
+  	position: absolute;
+  	bottom: 0;
+  	left: 0;
+  	width: 100%;
   }
 `
 const Login = styled.div`
   margin-left: auto;
 `
 const StyledButton = styled(Button)`
-  margin-left: 10px;
+  margin-left: 20px;
 `
 
 const Component = observer(() => {
