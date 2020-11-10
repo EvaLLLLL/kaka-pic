@@ -18,7 +18,6 @@ const H1 = styled.h1`
 
 const Img = styled.img`
   max-width: 300px;
-
 `
 
 const Component = observer(() => {
@@ -106,16 +105,16 @@ const Component = observer(() => {
 						<dd>{ImageStore.filename}</dd>
 						<dt>图片预览</dt>
 						<dd><Img src={ImageStore.serverFile.attributes.url.attributes.url}/></dd>
-					</dl>
-					<dt>尺寸定制</dt>
-					<dd>更多尺寸</dd>
-					<dt>
-						<input placeholder="最大宽度（可选）" ref={refWidth} onChange={bindWidthChange}/>
-						<input placeholder="最大高度（可选）" ref={refHeight} onChange={bindHeightChange}/>
+						<dt>尺寸定制</dt>
+						<dd>更多尺寸</dd>
+						<dt>
+							<input placeholder="最大宽度（可选）" ref={refWidth} onChange={bindWidthChange}/>
+							<input placeholder="最大高度（可选）" ref={refHeight} onChange={bindHeightChange}/>
+						</dt>
 						<dd>
 							<a href={store.fullStr}>{store.fullStr}</a>
 						</dd>
-					</dt>
+					</dl>
 				</Result>
 			) : null}
 		</Spin>
