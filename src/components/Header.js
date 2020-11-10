@@ -6,6 +6,11 @@ import {useStores} from '../stores'
 import {observer} from 'mobx-react'
 
 const Header = styled.header`
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	z-index: 2;
   padding: 15px 80px;
   display: flex;
   align-items: center;

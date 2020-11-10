@@ -25,8 +25,13 @@ a {
 	flex-direction: column;
 	min-height: 100vh;
 }
+#root:after {
+	 content: '';
+	 clear: both;
+	 display: block;
+}
 
 main {
 	flex-grow: 1;
-	padding: 100px;
+	padding: 100px 80px;
 }
