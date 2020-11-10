@@ -68,7 +68,7 @@ const Component = observer(() => {
 				return false
 			}
 			if (file.size > 1024 * 1024) {
-				message.error('只能上传小于 1M 的图片！')
+				message.error('只能上传小于1M的文件！')
 				return false
 			}
 			ImageStore.upLoad()
@@ -89,9 +89,9 @@ const Component = observer(() => {
 				<p className="ant-upload-drag-icon">
 					<InboxOutlined/>
 				</p>
-				<p className="ant-upload-text">点击 或者 拖拽图片到这里进行上传</p>
+				<p className="ant-upload-text">点击选择/拖拽文件至此处进行上传</p>
 				<p className="ant-upload-hint">
-					仅支持png/svg/jpg/jpeg/gif格式的图片，图片最大 1M
+					仅支持png/svg/jpg/jpeg/gif格式，文件大小≤1M
 				</p>
 			</Dragger>
 			{ImageStore.serverFile ? (
@@ -100,6 +100,7 @@ const Component = observer(() => {
 					<dl>
 						<dt>线上地址</dt>
 						<dd><a href={ImageStore.serverFile.attributes.url.attributes.url}
+						       rel="noreferrer"
 						       target="_blank">{ImageStore.serverFile.attributes.url.attributes.url}</a></dd>
 						<dt>文件名</dt>
 						<dd>{ImageStore.filename}</dd>
