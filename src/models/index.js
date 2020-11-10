@@ -11,6 +11,7 @@ const Auth = {
 		let user = new User()
 		user.setUsername(username)
 		user.setPassword(password)
+		console.log(user)
 		return new Promise((resolve, reject) => {
 			user.signUp().then(
 				(loginedUser) => resolve(loginedUser),
@@ -43,7 +44,7 @@ const Uploader = {
 		const avFile = new AV.File(filename, file)
 		
 		item.set('filename', filename)
-		item.set('owner', AV.User.current())
+		item.set('owner', User.current())
 		item.set('url', avFile)
 		console.log(AV.User.current())
 		return new Promise((resolve, reject) => {

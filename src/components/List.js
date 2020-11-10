@@ -20,9 +20,7 @@ const Component = observer(() => {
 	}
 	
 	useEffect(()=>{
-		console.log('进入组件')
 		return ()=>{
-			console.log('卸载')
 			HistoryStore.reset()
 		}
 	},[])
@@ -35,7 +33,7 @@ const Component = observer(() => {
 			                loadMore={loadMore}
 			                useWindow={true}>
 				<List dataSource={HistoryStore.list}
-				      renderItem={item => <List.Item key={item}>
+				      renderItem={item => <List.Item key={item.objectId}>
 					      <div>
 						      <Img src={item.attributes.url.attributes.url}/>
 					      </div>
@@ -44,6 +42,7 @@ const Component = observer(() => {
 					      </div>
 					      <div>
 						      <a href={item.attributes.url.attributes.url}
+						         rel="noreferrer"
 						         target="_blank">{item.attributes.url.attributes.url}</a>
 					      </div>
 				      </List.Item>}>

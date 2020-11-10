@@ -35,7 +35,6 @@ const Component = () => {
 	const history = useHistory()
 	
 	const onFinish = (values) => {
-		console.log('Success:', values)
 		AuthStore.setUsername(values.username)
 		AuthStore.setPassword(values.password)
 		AuthStore.login()
@@ -53,7 +52,6 @@ const Component = () => {
 	}
 	
 	const validateUsername = (rule, value) => {
-		console.log(rule, value)
 		if (/\W/.test(value))
 			return Promise.reject('不能出现字母数字下划线以外的字符')
 		if (value.length < 3) return Promise.reject('用户名字符长度不能小于 3')
