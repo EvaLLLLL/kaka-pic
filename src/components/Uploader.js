@@ -68,7 +68,7 @@ const Component = observer(() => {
 				message.error('只能上传 png/svg/jpg/jpeg/gif格式的图片！')
 				return false
 			}
-			if(file.size > 1024*1024) {
+			if (file.size > 1024 * 1024) {
 				message.error('只能上传小于 1M 的图片！')
 				return false
 			}
