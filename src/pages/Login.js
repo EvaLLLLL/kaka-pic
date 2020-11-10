@@ -7,13 +7,14 @@ import {useHistory} from 'react-router-dom'
 const Wrapper = styled.div`
   max-width: 600px;
   margin: 30px auto;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  padding: 20px;
+  border: 2px solid #eee;
+  border-radius: 20px;
 `
 const Title = styled.h1`
+	padding: 10px;
   text-align: center;
   margin-bottom: 30px;
+  border-bottom: 2px dashed #eee;
 `
 const layout = {
 	labelCol: {
@@ -107,7 +108,7 @@ const Component = () => {
 				
 				<Form.Item {...tailLayout}>
 					<Button type="primary" htmlType="submit">
-						提交
+						登录
 					</Button>
 				</Form.Item>
 			</Form>
