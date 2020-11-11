@@ -70,10 +70,10 @@ const Component = observer(() => {
 			<LogoUrl src="./icon.png"/>
 			<nav>
 				<StyledLink to="/" activeClassName="active" exact>
-					首页
+					上传图片
 				</StyledLink>
 				<StyledLink to="/history" activeClassName="active">
-					历史
+					上传历史
 				</StyledLink>
 				<StyledLink to="/about" activeClassName="active">
 					关于我

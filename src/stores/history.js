@@ -1,6 +1,7 @@
 import {observable, action} from 'mobx'
 import {Uploader} from '../models'
 import {message} from 'antd'
+import UserStore from './user'
 
 class HistoryStore {
 	@observable list = []
@@ -14,22 +15,22 @@ class HistoryStore {
 	}
 	
 	@action find() {
-		this.isLoading = true
-		Uploader.find({page: this.page, limit: this.limit})
-			.then(newList => {
-				this.append(newList)
-				this.page++
-				if (newList.length < this.limit) {
-					this.hasMore = false
-				}
-			})
-			.catch(() => {
-				message.error('加载数据失败')
-			})
-			.finally(() => {
-				this.isLoading = false
-			})
-	}
+			this.isLoading = true
+			Uploader.find({page: this.page, limit: this.limit})
+				.then(newList => {
+					this.append(newList)
+					this.page++
+					if (newList.length < this.limit) {
+						this.hasMore = false
+					}
+				})
+				.catch(() => {
+					message.error('加载数据失败')
+				})
+				.finally(() => {
+					this.isLoading = false
+				})
+		}
 	
 	@action reset() {
 		this.list = [];
