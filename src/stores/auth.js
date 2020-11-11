@@ -23,6 +23,7 @@ class AuthStore {
 		return new Promise((resolve, reject) => {
 			Auth.login(this.values.username, this.values.password)
 				.then((user) => {
+					this.setLocalUser(this.values.username, this.values.password)
 					UserStore.pullUser()
 					resolve(user)
 				})
@@ -53,6 +54,16 @@ class AuthStore {
 		UserStore.resetUser()
 		HistoryStore.reset()
 		ImageStore.reset()
+	}
+	
+	@action setLocalUser(username, password) {
+		window.localStorage.setItem('username', username)
+		window.localStorage.setItem('password', password)
+	}
+	
+	@action getLocalUser() {
+		this.values.username = window.localStorage.getItem('username')
+		this.values.password = window.localStorage.getItem('password')
 	}
 }
 

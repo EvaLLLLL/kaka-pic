@@ -11,7 +11,6 @@ const Auth = {
 		let user = new User()
 		user.setUsername(username)
 		user.setPassword(password)
-		console.log(user)
 		return new Promise((resolve, reject) => {
 			user.signUp().then(
 				(loginedUser) => resolve(loginedUser),
