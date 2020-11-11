@@ -19,7 +19,6 @@ class HistoryStore {
 			.then(newList => {
 				this.append(newList)
 				this.page++
-				console.log('hi')
 				if (newList.length < this.limit) {
 					this.hasMore = false
 				}
@@ -28,7 +27,6 @@ class HistoryStore {
 		}).finally(() => {
 			this.isLoading = false
 		})
-		return this.list
 	}
 	
 	@action reset() {

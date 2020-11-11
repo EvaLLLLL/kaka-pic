@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react'
 import {observer} from 'mobx-react'
 import {useStores} from '../stores'
-import {List, Spin} from 'antd'
-import InfiniteScroll from 'react-infinite-scroller'
+import {List, Spin, Card} from 'antd'
 import styled from 'styled-components'
 import Tips from '../components/Tips'
 
@@ -16,12 +15,8 @@ const Img = styled.img`
 const Component = observer(() => {
 	const {HistoryStore, UserStore} = useStores()
 	
-	const loadMore = () => {
-		HistoryStore.find()
-	}
-	
-	
 	useEffect(() => {
+		HistoryStore.find()
 		return () => {
 			HistoryStore.reset()
 		}
@@ -30,36 +25,40 @@ const Component = observer(() => {
 	return (
 		<div>
 			{UserStore.currentUser ?
-				<InfiniteScroll
-					initialLoad={true}
-					pageStart={0}
-					loadMore={loadMore}
-					hasMore={!HistoryStore.isLoading && HistoryStore.hasMore}
-					useWindow={true}
-				>
-					<List
-						dataSource={HistoryStore.list}
-						renderItem={
-							item => <List.Item key={item.objectId}>
+				<List
+					grid={{
+						gutter: 16,
+						xs: 1,
+						sm: 2,
+						md: 4,
+						lg: 4,
+						xl: 6,
+						xxl: 3,
+					}}
+					pagination={{
+						pageSize: 12,
+					}}
+					dataSource={HistoryStore.list}
+					renderItem={
+						item => <List.Item key={item.objectId}>
+							<Card title={item.attributes.filename}>
 								<div>
 									<Img src={item.attributes.url.attributes.url}/>
 								</div>
 								<div>
-									<h5>{item.attributes.filename}</h5>
+									<a target="_blank"
+									   href={item.attributes.url.attributes.url}>{item.attributes.url.attributes.url}</a>
 								</div>
-								<div>
-									<a target="_blank" href={item.attributes.url.attributes.url}>{item.attributes.url.attributes.url}</a>
-								</div>
-							</List.Item>
-						}
-					>
-						{HistoryStore.isLoading && HistoryStore.hasMore && (
-							<div>
-								<Spin tip="加载中"/>
-							</div>
-						)}
-					</List>
-				</InfiniteScroll> : <Tips>登录后可查看上传历史!!!</Tips>}
+							</Card>
+						</List.Item>
+					}
+				>
+					{HistoryStore.isLoading && HistoryStore.hasMore && (
+						<div>
+							<Spin tip="加载中"/>
+						</div>
+					)}
+				</List> : <Tips>登录后可查看上传历史!!!</Tips>}
 		</div>
 	)
 })
