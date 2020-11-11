@@ -14,28 +14,30 @@ class HistoryStore {
 	}
 	
 	@action find() {
-			this.isLoading = true
-			Uploader.find({page: this.page, limit: this.limit})
-				.then(newList => {
-					this.append(newList)
-					if (newList.length < this.limit) {
-						this.hasMore = false
-					}
-				})
-				.catch(() => {
-					message.error('加载数据失败')
-				})
-				.finally(() => {
-					this.isLoading = false
-				})
-		}
+		this.isLoading = true
+		Uploader.find({page: this.page, limit: this.limit})
+			.then(newList => {
+				this.append(newList)
+				this.page++
+				console.log('hi')
+				if (newList.length < this.limit) {
+					this.hasMore = false
+				}
+			}).catch(() => {
+			message.error('加载数据失败')
+		}).finally(() => {
+			this.isLoading = false
+		})
+		return this.list
+	}
 	
 	@action reset() {
-		this.list = [];
-		this.isLoading = false;
-		this.hasMore = true;
-		this.page = 0;
+		this.list = []
+		this.isLoading = false
+		this.hasMore = true
+		this.page = 0
 	}
+	
 }
 
 export default new HistoryStore()
