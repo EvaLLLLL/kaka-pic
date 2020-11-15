@@ -16,6 +16,9 @@ const Title = styled.h1`
   margin-bottom: 30px;
   border-bottom: 2px dashed #eee;
 `
+const StyledNavLink = styled(NavLink)`
+	color: #1a90ff;
+`
 const SignUp = styled.span`
 	font-size: 12px;
 	font-weight: normal;
@@ -112,7 +115,7 @@ const Component = () => {
 						登录
 					</Button>
 					<SignUp>还没账号？
-						<NavLink to="/register">去注册</NavLink>
+						<StyledNavLink to="/register">去注册</StyledNavLink>
 					</SignUp>
 				</Form.Item>
 			</Form>
