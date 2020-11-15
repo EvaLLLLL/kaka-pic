@@ -47,6 +47,7 @@ const Component = observer(() => {
 								</div>
 								<div>
 									<a target="_blank"
+									   rel="noreferrer"
 									   href={item.attributes.url.attributes.url}>{item.attributes.url.attributes.url}</a>
 								</div>
 							</Card>

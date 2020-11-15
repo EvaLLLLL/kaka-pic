@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {Form, Input, Button} from 'antd'
 import {useStores} from '../stores'
-import {useHistory} from 'react-router-dom'
+import {NavLink, useHistory} from 'react-router-dom'
 
 const Wrapper = styled.div`
   max-width: 600px;
@@ -15,6 +15,11 @@ const Title = styled.h1`
   text-align: center;
   margin-bottom: 30px;
   border-bottom: 2px dashed #eee;
+`
+const SignUp = styled.span`
+	font-size: 12px;
+	font-weight: normal;
+	margin-left: 30px;
 `
 const layout = {
 	labelCol: {
@@ -47,11 +52,9 @@ const Component = () => {
 				alert('登录失败')
 			})
 	}
-	
 	const onFinishFailed = (errorInfo) => {
 		console.log('Failed:', errorInfo)
 	}
-	
 	const validateUsername = (rule, value) => {
 		if (/\W/.test(value))
 			return Promise.reject('不能出现字母数字下划线以外的字符')
@@ -84,7 +87,6 @@ const Component = () => {
 				>
 					<Input/>
 				</Form.Item>
-				
 				<Form.Item
 					label="密码"
 					name="password"
@@ -105,11 +107,13 @@ const Component = () => {
 				>
 					<Input.Password/>
 				</Form.Item>
-				
 				<Form.Item {...tailLayout}>
 					<Button type="primary" htmlType="submit">
 						登录
 					</Button>
+					<SignUp>还没账号？
+						<NavLink to="/register">去注册</NavLink>
+					</SignUp>
 				</Form.Item>
 			</Form>
 		</Wrapper>
