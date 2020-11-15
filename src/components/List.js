@@ -4,12 +4,21 @@ import {useStores} from '../stores'
 import {List, Spin, Card} from 'antd'
 import styled from 'styled-components'
 import Tips from '../components/Tips'
+import ClipboardJS from 'clipboard'
 
-const Img = styled.img`
-	width: 100px;
-	height: 100px;
-	object-fit: contain;
-	border: 1px solid #eee;
+const {Meta} = Card
+new ClipboardJS('.btn')
+const Button = styled.button`
+	background: none;
+	margin: 5px;
+	padding: 0;
+	font-size: 14px;
+	border: none;
+	cursor: pointer;
+`
+const Link = styled.a`
+	font-size: 14px;
+	margin: 5px;
 `
 
 const Component = observer(() => {
@@ -21,7 +30,6 @@ const Component = observer(() => {
 			HistoryStore.reset()
 		}
 	}, [])
-	
 	return (
 		<div>
 			{UserStore.currentUser ?
@@ -41,15 +49,16 @@ const Component = observer(() => {
 					dataSource={HistoryStore.list}
 					renderItem={
 						item => <List.Item key={item.objectId}>
-							<Card title={item.attributes.filename}>
-								<div>
-									<Img src={item.attributes.url.attributes.url}/>
-								</div>
-								<div>
-									<a target="_blank"
-									   rel="noreferrer"
-									   href={item.attributes.url.attributes.url}>{item.attributes.url.attributes.url}</a>
-								</div>
+							<Card style={{ width: 150 }}
+								cover={
+								<img src={item.attributes.url.attributes.url}
+								     alt={item.attributes.filename}/>}
+							            actions={[
+								            <Button className="btn"
+								                    data-clipboard-text={item.attributes.url.attributes.url}>复制链接</Button>,
+								            <Link href={item.attributes.url.attributes.url} target="_blank">点击查看</Link>
+							            ]}>
+								<Meta title={item.attributes.filename}/>
 							</Card>
 						</List.Item>
 					}

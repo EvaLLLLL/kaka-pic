@@ -1,23 +1,41 @@
 import React, {useRef} from 'react'
 import {useStores} from '../stores'
 import {observer, useLocalStore} from 'mobx-react'
-import {Upload, message, Spin} from 'antd'
+import {Upload, message, Spin, Card} from 'antd'
 import {InboxOutlined} from '@ant-design/icons'
 import styled from 'styled-components'
+import ClipboardJS from 'clipboard'
+
+const {Meta} = Card
+new ClipboardJS('.btn')
+
+const Button = styled.button`
+	background: none;
+	margin: 5px;
+	padding: 0;
+	font-size: 14px;
+	border: none;
+	cursor: pointer;
+	outline: none;
+`
+
+const Link = styled.a`
+	font-size: 14px;
+	margin: 5px;
+`
 
 const Result = styled.div`
   margin-top: 30px;
   border: 1px dashed #ccc;
   padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `
 
 const H1 = styled.h1`
   margin: 20px 0;
   text-align: center;
-`
-
-const Img = styled.img`
-  max-width: 300px;
 `
 
 const Component = observer(() => {
@@ -97,25 +115,24 @@ const Component = observer(() => {
 			{ImageStore.serverFile ? (
 				<Result>
 					<H1>上传结果</H1>
-					<dl>
-						<dt>线上地址</dt>
-						<dd><a href={ImageStore.serverFile.attributes.url.attributes.url}
-						       rel="noreferrer"
-						       target="_blank">{ImageStore.serverFile.attributes.url.attributes.url}</a></dd>
-						<dt>文件名</dt>
-						<dd>{ImageStore.filename}</dd>
-						<dt>图片预览</dt>
-						<dd><Img src={ImageStore.serverFile.attributes.url.attributes.url}/></dd>
-						{/*<dt>尺寸定制</dt>*/}
-						{/*<dd>更多尺寸</dd>*/}
-						{/*<dt>*/}
-						{/*	<input placeholder="最大宽度（可选）" ref={refWidth} onChange={bindWidthChange}/>*/}
-						{/*	<input placeholder="最大高度（可选）" ref={refHeight} onChange={bindHeightChange}/>*/}
-						{/*</dt>*/}
-						{/*<dd>*/}
-						{/*	<a href={store.fullStr}>{store.fullStr}</a>*/}
-						{/*</dd>*/}
-					</dl>
+					<Card
+						style={{width: 300}}
+						cover={
+							<img
+								alt="img"
+								src={ImageStore.serverFile.attributes.url.attributes.url}
+							/>
+						}
+						actions={[
+							<Button className="btn"
+							        data-clipboard-text={ImageStore.serverFile.attributes.url.attributes.url}>复制链接</Button>,
+							<Link href={ImageStore.serverFile.attributes.url.attributes.url} target="_blank">点击查看</Link>
+						]}>
+						<Meta
+							title={ImageStore.filename}
+							description={ImageStore.serverFile.attributes.url.attributes.url}
+						/>
+					</Card>
 				</Result>
 			) : null}
 		</Spin>
